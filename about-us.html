@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SeedingData</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            min-height: 100vh;
+        }
+        .about-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+        .about-header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .about-header p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .mission-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-teal) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        .mission-section h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .mission-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .content-section {
+            margin: 3rem 0;
+        }
+        .content-section h2 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-teal);
+            padding-bottom: 0.5rem;
+        }
+        .content-section h3 {
+            color: var(--primary-teal);
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem 0;
+        }
+        .content-section p {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .content-section ul {
+            margin-left: 2rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+        .content-section li {
+            margin-bottom: 0.8rem;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .value-card {
+            background: var(--background-light);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        .value-icon {
+            background: var(--primary-teal);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .value-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        .value-card p {
+            color: var(--text-dark);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        .tech-section {
+            background: var(--background-light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        .tech-section h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .tech-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .tech-feature {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-teal);
+        }
+        .tech-feature h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        .tech-feature p {
+            color: var(--text-dark);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        .stat-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-teal);
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .disclaimer-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .disclaimer-box h3 {
+            color: var(--primary-teal);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        .disclaimer-box p {
+            color: var(--text-dark);
+            margin: 0;
+        }
+        .team-section {
+            margin: 3rem 0;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-teal);
+            border-radius: 50%;
+            margin: 0 auto 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .team-member h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+        .team-member p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .contact-section {
+            background: var(--accent-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        .contact-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .contact-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+        .contact-section a {
+            color: white;
+            text-decoration: underline;
+        }
+        .contact-section a:hover {
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .about-container {
+                padding: 1rem;
+            }
+            .about-header h1 {
+                font-size: 2rem;
+            }
+            .mission-section {
+                padding: 2rem 1rem;
+            }
+            .values-grid,
+            .tech-features,
+            .stats-section,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="logo.jpeg" alt="SeedingData Logo" style="height: 50px; width: auto;">
+                        <h1 style="font-size: 20px; margin: 0; color: #2c3e50;">Seeding Data Corp</h1>
+                    </div>
+                </div>
+                <div class="header-trust">
+                    <span class="ssl-badge">SSL Secured</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="about-container">
+        <div class="about-header">
+            <h1>About SeedingData</h1>
+            <p>Connecting people with financial options through technology and transparency</p>
+        </div>
+
+        <div class="mission-section">
+            <h2>Our Mission</h2>
+            <p>To simplify access to financial options by using technology to efficiently connect consumers with lenders who can meet their needs, while maintaining complete transparency and putting users in control of their financial journey.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>What We Do</h2>
+            <p>SeedingData is a technology-driven platform that specializes in connecting consumers with lenders and financial service providers. We use advanced matching algorithms and data analysis to help you find potential loan options quickly and efficiently.</p>
+
+            <h3>Our Core Service</h3>
+            <ul>
+                <li><strong>Matching Platform:</strong> We connect you with lenders from our extensive network who may be able to help with your financial needs</li>
+                <li><strong>Streamlined Process:</strong> Our secure form takes just minutes to complete, and we begin matching you immediately</li>
+                <li><strong>Multiple Options:</strong> We work with numerous lenders to increase your chances of finding suitable loan options</li>
+                <li><strong>No Cost Service:</strong> Our platform is completely free for consumers - you'll never pay to use our matching service</li>
+            </ul>
+
+            <div class="disclaimer-box">
+                <h3>Important Clarification</h3>
+                <p>SeedingData is not a lender. We do not make credit decisions, provide loans, or offer financial advice. We are a matching service that connects you with third-party lenders who make their own independent decisions.</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Technology & Efficiency</h2>
+            <p>Our platform is built on modern technology that prioritizes speed, accuracy, and user experience. We've invested heavily in creating a system that makes the loan search process faster and more efficient than traditional methods.</p>
+
+            <div class="tech-section">
+                <h3>Our Technology Stack</h3>
+                <div class="tech-features">
+                    <div class="tech-feature">
+                        <h4>Advanced Matching</h4>
+                        <p>AI-powered algorithms that match you with suitable lenders based on your profile and needs</p>
+                    </div>
+                    <div class="tech-feature">
+                        <h4>Real-Time Processing</h4>
+                        <p>Instant data processing that begins matching you with lenders within minutes</p>
+                    </div>
+                    <div class="tech-feature">
+                        <h4>Secure Infrastructure</h4>
+                        <p>Bank-level security protocols to protect your personal and financial information</p>
+                    </div>
+                    <div class="tech-feature">
+                        <h4>Mobile Optimization</h4>
+                        <p>Fully responsive design that works seamlessly on all devices and screen sizes</p>
+                    </div>
+                    <div class="tech-feature">
+                        <h4>Data Analytics</h4>
+                        <p>Continuous analysis to improve matching accuracy and user experience</p>
+                    </div>
+                    <div class="tech-feature">
+                        <h4>Automation Tools</h4>
+                        <p>Streamlined processes that reduce manual steps and speed up connections</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Efficiency Benefits</h3>
+            <ul>
+                <li><strong>Time Savings:</strong> What used to take hours or days now takes minutes</li>
+                <li><strong>Broader Access:</strong> Connect with multiple lenders simultaneously instead of applying one by one</li>
+                <li><strong>Smart Matching:</strong> Our system identifies the most relevant lenders for your specific situation</li>
+                <li><strong>Continuous Improvement:</strong> We constantly refine our algorithms based on user outcomes and feedback</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">T</div>
+                    <h3>Transparency</h3>
+                    <p>We believe in complete openness about how our service works, how we make money, and what users can expect. No hidden fees, no surprises.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">U</div>
+                    <h3>User Control</h3>
+                    <p>You're always in control of your financial decisions. No pressure, no obligation to accept offers, and complete freedom to choose what works best for you.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">S</div>
+                    <h3>Security</h3>
+                    <p>We protect your data with the same level of security that major banks use. Your privacy and security are non-negotiable priorities.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">E</div>
+                    <h3>Efficiency</h3>
+                    <p>We use technology to make the loan search process faster, easier, and more effective. Your time is valuable, and we respect that.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Our Commitment to Privacy</h2>
+            <p>Privacy and data protection are fundamental to our business. We've built our platform with privacy-by-design principles and are committed to protecting your personal information.</p>
+
+            <h3>Privacy Commitments</h3>
+            <ul>
+                <li><strong>Data Encryption:</strong> Your information is protected with 256-bit SSL encryption during transmission and storage</li>
+                <li><strong>Limited Sharing:</strong> We only share your information with lenders in our network for the purpose of providing loan offers</li>
+                <li><strong>No Unnecessary Data:</strong> We only collect information that's essential for our matching service</li>
+                <li><strong>User Rights:</strong> You have the right to access, correct, or delete your personal information</li>
+                <li><strong>Compliance:</strong> We comply with all applicable privacy laws and regulations</li>
+            </ul>
+
+            <p>We believe that trust is earned through consistent action, not just words. Our privacy practices reflect this commitment every day.</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-item">
+                <div class="stat-number">500K+</div>
+                <div class="stat-label">Users Helped</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Lender Partners</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50</div>
+                <div class="stat-label">States Served</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3 Min</div>
+                <div class="stat-label">Average Form Time</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Why Choose SeedingData</h2>
+            <p>In a world of complex financial services, we offer simplicity, transparency, and efficiency. Here's what makes us different:</p>
+
+            <ul>
+                <li><strong>Clear Business Model:</strong> We're upfront about being a matching service, not a lender</li>
+                <li><strong>No Hidden Costs:</strong> Our service is completely free for consumers</li>
+                <li><strong>Advanced Technology:</strong> Modern platform designed for speed and accuracy</li>
+                <li><strong>Extensive Network:</strong> Connections with numerous lenders across the country</li>
+                <li><strong>User-Focused:</strong> Every decision we make starts with what's best for our users</li>
+                <li><strong>Continuous Innovation:</strong> We're always improving our platform and processes</li>
+            </ul>
+
+            <div class="disclaimer-box">
+                <h3>Our Role in Your Financial Journey</h3>
+                <p>We see ourselves as facilitators - helping you explore options and connect with opportunities. The final decisions are always yours to make, and we're here to provide the tools and connections you need to make informed choices.</p>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h3>Get in Touch</h3>
+            <p>Have questions about our service or want to learn more? We'd love to hear from you.</p>
+            <p style="color: #e74c3c; font-weight: 600; margin: 15px 0;">Limited offers available — act fast!</p>
+            <p style="color: #666; font-size: 14px; margin-bottom: 20px;">$1,000–$50,000 available • Funds as soon as next business day</p>
+            <p><strong>Email:</strong> support@seedingdata.com</p>
+            <p><strong>Phone:</strong> (470) 243-4061</p>
+            <p><strong>Address:</strong> P.O. Box 1503, San Carlos, CA 94070</p>
+            <p><strong>Hours:</strong> Monday-Friday, 9AM-6PM EST</p>
+            <p><a href="index.html#form-section">Get Matched Now</a> | <a href="how-it-works.html">How It Works</a> | <a href="faq.html">FAQ</a></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 SeedingData. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

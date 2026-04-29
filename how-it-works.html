@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - SeedingData</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .how-it-works-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            min-height: 100vh;
+        }
+        .how-it-works-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+        .how-it-works-header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .how-it-works-header p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .process-overview {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-teal) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .process-overview h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .process-overview p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+        .steps-container {
+            margin: 3rem 0;
+        }
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--background-light);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        .step-item:hover {
+            transform: translateY(-5px);
+        }
+        .step-number {
+            background: var(--primary-teal);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-right: 2rem;
+        }
+        .step-content {
+            flex: 1;
+        }
+        .step-content h3 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .step-content p {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .step-content ul {
+            margin-left: 1.5rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+        .step-content li {
+            margin-bottom: 0.5rem;
+        }
+        .security-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .security-box h4 {
+            color: var(--primary-teal);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .trust-badge {
+            background: white;
+            border: 2px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+        .trust-badge:hover {
+            border-color: var(--primary-teal);
+        }
+        .trust-badge h4 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        .trust-badge p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-teal);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 70px;
+            margin-bottom: 2rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 22px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary-teal);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary-teal);
+        }
+        .timeline-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+        .timeline-item p {
+            color: var(--text-dark);
+            margin: 0;
+        }
+        .cta-section {
+            background: var(--accent-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        .cta-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .cta-button {
+            background: white;
+            color: var(--accent-green);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .disclaimer {
+            background: var(--background-light);
+            border-left: 4px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .disclaimer h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+        .disclaimer p {
+            color: var(--text-dark);
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .how-it-works-container {
+                padding: 1rem;
+            }
+            .how-it-works-header h1 {
+                font-size: 2rem;
+            }
+            .step-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .step-number {
+                margin: 0 auto 1rem auto;
+            }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                padding-left: 50px;
+            }
+            .timeline-item::before {
+                left: 12px;
+            }
+            .trust-badges {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="logo.jpeg" alt="SeedingData Logo" style="height: 50px; width: auto;">
+                        <h1 style="font-size: 20px; margin: 0; color: #2c3e50;">Seeding Data Corp</h1>
+                    </div>
+                </div>
+                <div class="header-trust">
+                    <span class="ssl-badge">SSL Secured</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="how-it-works-container">
+        <div class="how-it-works-header">
+            <h1>How It Works</h1>
+            <p>Connecting you with lenders in minutes through our simple, secure matching process</p>
+        </div>
+
+        <div class="process-overview">
+            <h2>Get Matched With Lenders in 5 Simple Steps</h2>
+            <p>Our streamlined process takes just a few minutes, and you're under no obligation to accept any offers.</p>
+        </div>
+
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Fill Out Our Short Form</h3>
+                    <p>Start by completing our secure, 3-minute form with basic information about yourself and what you're looking for.</p>
+                    <ul>
+                        <li>Personal information (name, contact details)</li>
+                        <li>Address and location</li>
+                        <li>Requested loan amount</li>
+                        <li>Basic employment and banking information</li>
+                        <li>Credit score range (self-reported)</li>
+                    </ul>
+                    <div class="security-box">
+                        <h4>Secure & Private</h4>
+                        <p>Your information is protected with 256-bit SSL encryption and never shared without your consent.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Data Is Securely Processed</h3>
+                    <p>Once you submit your information, our system immediately begins processing it to find the best matches from our lender network.</p>
+                    <ul>
+                        <li>Information is encrypted and transmitted securely</li>
+                        <li>Our matching algorithm analyzes your profile</li>
+                        <li>We identify lenders that match your criteria</li>
+                        <li>Process typically completes within minutes</li>
+                    </ul>
+                    <div class="security-box">
+                        <h4>Bank-Level Security</h4>
+                        <p>We use the same encryption technology as major banks to protect your data during transmission and storage.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Platform Matches You With Lenders</h3>
+                    <p>Our advanced matching system connects you with lenders from our trusted network who may be able to meet your needs.</p>
+                    <ul>
+                        <li>We match you with multiple potential lenders</li>
+                        <li>Each lender receives your information simultaneously</li>
+                        <li>Lenders review your request based on their criteria</li>
+                        <li>Matches are based on loan amount, location, and profile</li>
+                    </ul>
+                    <div class="security-box">
+                        <h4>Extensive Lender Network</h4>
+                        <p>We work with numerous lenders across the country to increase your chances of finding a suitable match.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Review Available Options</h3>
+                    <p>Lenders who may be able to help will contact you directly with their offers. You'll have the opportunity to review and compare your options.</p>
+                    <ul>
+                        <li>Receive loan offers via phone, email, or text</li>
+                        <li>Review interest rates, terms, and conditions</li>
+                        <li>Compare multiple offers side by side</li>
+                        <li>Ask questions and request clarification</li>
+                    </ul>
+                    <div class="security-box">
+                        <h4>No Pressure</h4>
+                        <p>Take your time to review all offers. There's no pressure to accept anything you're not comfortable with.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Choose Your Best Option</h3>
+                    <p>If you find an offer that works for you, you can proceed directly with that lender to complete your loan application.</p>
+                    <ul>
+                        <li>Select the lender that best meets your needs</li>
+                        <li>Complete the lender's application process</li>
+                        <li>Receive final approval and loan terms</li>
+                        <li>Get your funds if approved (timing varies by lender)</li>
+                    </ul>
+                    <div class="security-box">
+                        <h4>Your Choice Matters</h4>
+                        <p>You're in complete control. You can accept any offer, decline all offers, or take time to decide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <h4>Fast Process</h4>
+                <p>Complete matching in minutes, not days</p>
+            </div>
+            <div class="trust-badge">
+                <h4>Secure Platform</h4>
+                <p>Bank-level encryption protects your data</p>
+            </div>
+            <div class="trust-badge">
+                <h4>No Obligation</h4>
+                <p>Review offers without commitment</p>
+            </div>
+            <div class="trust-badge">
+                <h4>Free Service</h4>
+                <p>No cost to use our matching platform</p>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <h2 style="text-align: center; color: var(--primary-blue); margin-bottom: 2rem;">Typical Timeline</h2>
+            <div class="timeline-item">
+                <h4>0-3 Minutes</h4>
+                <p>Complete and submit our secure form</p>
+            </div>
+            <div class="timeline-item">
+                <h4>3-5 Minutes</h4>
+                <p>Our system processes and matches your information</p>
+            </div>
+            <div class="timeline-item">
+                <h4>5-30 Minutes</h4>
+                <p>Lenders begin contacting you with offers</p>
+            </div>
+            <div class="timeline-item">
+                <h4>1-24 Hours</h4>
+                <p>Review and compare multiple loan offers</p>
+            </div>
+            <div class="timeline-item">
+                <h4>24-48 Hours</h4>
+                <p>Complete loan process with chosen lender (if approved)</p>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <h3>Important: SeedingData Is Not a Lender</h3>
+            <p>SeedingData is a free matching service that connects consumers with lenders and financial service providers. We do not make credit decisions, provide loans, or offer financial advice. All loan decisions, terms, and conditions are determined by individual lenders in our network. We are not responsible for lender decisions or loan outcomes.</p>
+        </div>
+
+        <div class="cta-section">
+            <h3>Ready to Find Your Loan Options?</h3>
+            <p>Get started now and see what lenders may be available for you</p>
+            <p style="color: #e74c3c; font-weight: 600; margin: 15px 0;">Limited offers available — act fast!</p>
+            <p style="color: #666; font-size: 14px; margin-bottom: 20px;">$1,000–$50,000 available • No credit impact to check</p>
+            <a href="index.html#form-section" class="cta-button">Get Matched Now</a>
+        </div>
+
+        <div class="disclaimer">
+            <h3>No Obligation Guarantee</h3>
+            <p>Using SeedingData's service is completely free and comes with no obligation. You can review lender offers without committing to anything. If you choose not to proceed with any lender, there's no cost or penalty. You're in complete control of the process.</p>
+        </div>
+
+        <div class="disclaimer">
+            <h3>Security & Privacy Commitment</h3>
+            <p>Your privacy and security are our top priorities. We use industry-standard encryption to protect your information, and we only share your data with lenders in our network for the purpose of providing you with loan offers. We never sell your information to unrelated third parties.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 SeedingData. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

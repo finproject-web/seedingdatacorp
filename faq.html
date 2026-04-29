@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - SeedingData</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            min-height: 100vh;
+        }
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
+        }
+        .faq-header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .faq-header p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .category-tag {
+            background: var(--background-light);
+            color: var(--primary-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .category-tag:hover,
+        .category-tag.active {
+            background: var(--primary-teal);
+            color: white;
+            border-color: var(--primary-teal);
+        }
+        .faq-list {
+            margin-bottom: 3rem;
+        }
+        .faq-item {
+            background: var(--background-light);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary-blue);
+            transition: background-color 0.3s ease;
+        }
+        .faq-question:hover {
+            background: rgba(0, 168, 150, 0.05);
+        }
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: var(--primary-teal);
+            transition: transform 0.3s ease;
+            font-weight: 300;
+        }
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        .faq-answer p {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .faq-answer ul {
+            margin-left: 1.5rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .info-box {
+            background: var(--background-light);
+            border-left: 4px solid var(--accent-green);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .contact-section {
+            background: var(--primary-blue);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        .contact-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .contact-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+        .contact-section a {
+            color: white;
+            text-decoration: underline;
+        }
+        .contact-section a:hover {
+            text-decoration: none;
+        }
+        .search-box {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+            display: block;
+            transition: border-color 0.3s ease;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+        }
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .faq-container {
+                padding: 1rem;
+            }
+            .faq-header h1 {
+                font-size: 2rem;
+            }
+            .faq-categories {
+                gap: 0.5rem;
+            }
+            .category-tag {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="logo.jpeg" alt="SeedingData Logo" style="height: 50px; width: auto;">
+                        <h1 style="font-size: 20px; margin: 0; color: #2c3e50;">Seeding Data Corp</h1>
+                    </div>
+                </div>
+                <div class="header-trust">
+                    <span class="ssl-badge">SSL Secured</span>
+                    <a href="faq.html" style="color: #3498db; text-decoration: none; font-weight: 500; margin-left: 15px;">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="faq-container">
+        <div class="faq-header">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about our service and how we can help you find loan options</p>
+        </div>
+
+        <input type="text" class="search-box" placeholder="Search questions..." id="faqSearch">
+
+        <div class="faq-categories">
+            <div class="category-tag active" data-category="all">All Questions</div>
+            <div class="category-tag" data-category="general">General</div>
+            <div class="category-tag" data-category="process">Process</div>
+            <div class="category-tag" data-category="security">Security</div>
+            <div class="category-tag" data-category="credit">Credit</div>
+        </div>
+
+        <div class="faq-list" id="faqList">
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <span>Is SeedingData a lender?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No, SeedingData is not a lender. We are a free lead generation and matching service that connects consumers with lenders and financial service providers from our trusted network.</p>
+                    <div class="highlight-box">
+                        <p><strong>What We Do:</strong> We collect your information through our secure form and share it with potential lenders who may be able to help with your loan request.</p>
+                    </div>
+                    <p>All loan decisions, terms, and approval are determined directly by individual lenders based on their own criteria. We do not make credit decisions, provide loans, or influence lender decisions in any way.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="credit">
+                <div class="faq-question">
+                    <span>Will this affect my credit score?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Submitting your information through SeedingData will not directly affect your credit score. Our initial matching process does not involve a hard credit check.</p>
+                    <div class="info-box">
+                        <p><strong>However:</strong> When lenders review your application, they may perform a credit check. This could be a soft inquiry (which doesn't affect your score) or a hard inquiry (which may temporarily impact your score).</p>
+                    </div>
+                    <ul>
+                        <li><strong>Soft Inquiry:</strong> Typically doesn't affect credit score</li>
+                        <li><strong>Hard Inquiry:</strong> May cause a temporary, small drop in score</li>
+                        <li><strong>Multiple Inquiries:</strong> Multiple hard inquiries in a short time can have a larger impact</li>
+                    </ul>
+                    <p>Each lender has their own policies regarding credit checks. You can ask lenders about their credit check process before proceeding with any application.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="process">
+                <div class="faq-question">
+                    <span>How long does the process take?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The SeedingData matching process is very fast, but the overall timeline depends on lender response times and your decisions.</p>
+                    <ul>
+                        <li><strong>Form Completion:</strong> 3-5 minutes</li>
+                        <li><strong>Our Processing:</strong> 1-2 minutes</li>
+                        <li><strong>Lender Contact:</strong> 5 minutes to 24 hours</li>
+                        <li><strong>Loan Funding:</strong> Varies by lender (typically 1-3 business days if approved)</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <p><strong>Important:</strong> While our matching is fast, we cannot guarantee specific timelines for lender responses or loan funding, as these are controlled by individual lenders.</p>
+                    </div>
+                    <p>Some lenders offer same-day funding, while others may take several business days. The exact timing will be provided by each lender in their offer details.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="credit">
+                <div class="faq-question">
+                    <span>What credit score is needed?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>There is no specific minimum credit score required to use SeedingData. We work with lenders who consider various credit backgrounds, from excellent to poor credit.</p>
+                    <div class="info-box">
+                        <p><strong>Credit Score Considerations:</strong> Different lenders have different criteria. Some specialize in working with consumers who have excellent credit, while others focus on helping those with fair or bad credit.</p>
+                    </div>
+                    <ul>
+                        <li><strong>Excellent (750+):</strong> More options, potentially better rates</li>
+                        <li><strong>Good (700-749):</strong> Good range of options</li>
+                        <li><strong>Fair (650-699):</strong> Some lenders may work with you</li>
+                        <li><strong>Poor (600-649):</strong> Limited but available options</li>
+                        <li><strong>Bad (Below 600):</strong> Fewer options, but some lenders specialize in this range</li>
+                    </ul>
+                    <div class="warning-box">
+                        <p><strong>No Guarantee:</strong> We cannot guarantee that any specific credit score will result in loan approval, as each lender has their own underwriting criteria and requirements.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="security">
+                <div class="faq-question">
+                    <span>Is my information safe?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we take data security very seriously. We implement multiple layers of security to protect your information.</p>
+                    <ul>
+                        <li><strong>256-bit SSL Encryption:</strong> Protects data during transmission</li>
+                        <li><strong>Secure Data Storage:</strong> Your information is stored in secure systems</li>
+                        <li><strong>Access Controls:</strong> Limited access to authorized personnel only</li>
+                        <li><strong>Regular Security Updates:</strong> We maintain up-to-date security measures</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <p><strong>Sharing Policy:</strong> We only share your information with lenders in our network for the purpose of providing you with loan offers. We do not sell your information to unrelated third parties.</p>
+                    </div>
+                    <p>However, no security system is completely impenetrable. While we take reasonable precautions, you should be aware that all online services carry some level of risk.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <span>Am I obligated to accept an offer?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No, you are under absolutely no obligation to accept any loan offers presented to you through our service.</p>
+                    <div class="info-box">
+                        <p><strong>Your Choice Matters:</strong> You have complete control over the process. You can review all offers, ask questions, and decline any or all offers without any penalty or cost.</p>
+                    </div>
+                    <ul>
+                        <li>Review offers at your own pace</li>
+                        <li>Ask lenders any questions you have</li>
+                        <li>Decline offers that don't meet your needs</li>
+                        <li>Take time to compare options</li>
+                        <li>Walk away at any time</li>
+                    </ul>
+                    <p>There is no pressure to accept any offer, and no consequences for declining. Our service is designed to help you explore your options, not to push you into any decision.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="process">
+                <div class="faq-question">
+                    <span>Why am I being contacted by multiple lenders?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You're being contacted by multiple lenders because SeedingData works with a network of lenders, and we share your information with several potential matches simultaneously.</p>
+                    <div class="highlight-box">
+                        <p><strong>Benefits of Multiple Contacts:</strong> This approach increases your chances of finding a suitable loan option and allows you to compare different offers side by side.</p>
+                    </div>
+                    <ul>
+                        <li><strong>More Options:</strong> Multiple lenders mean more potential loan offers</li>
+                        <li><strong>Comparison Shopping:</strong> Compare rates, terms, and conditions</li>
+                        <li><strong>Better Chances:</strong> If one lender declines, others may still approve</li>
+                        <li><strong>Competitive Offers:</strong> Lenders may offer better terms to compete for your business</li>
+                    </ul>
+                    <p>If you wish to stop receiving communications, you can opt out directly with each lender or contact us for assistance.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <span>How do I opt out of communications?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can opt out of communications at any time. Here are the different ways to manage your communication preferences:</p>
+                    <ul>
+                        <li><strong>Email:</strong> Click the "unsubscribe" link in marketing emails</li>
+                        <li><strong>Text Messages:</strong> Reply "STOP" to any text message</li>
+                        <li><strong>Phone Calls:</strong> Ask to be removed from call lists during conversations</li>
+                        <li><strong>Direct Contact:</strong> Reach out to lenders directly to opt out</li>
+                    </ul>
+                    <div class="info-box">
+                        <p><strong>SeedingData Opt-Out:</strong> To opt out of our communications specifically, contact us at privacy@seedingdata.com or call 1-800-SEED-DATA.</p>
+                    </div>
+                    <p>Please note that opting out of marketing communications may not stop transactional messages related to active loan applications or inquiries.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <span>Is SeedingData really free?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, SeedingData is completely free for consumers. There is no charge to use our matching service or to submit your information.</p>
+                    <div class="highlight-box">
+                        <p><strong>How We Make Money:</strong> We may receive compensation from our lending partners when they successfully connect with qualified borrowers through our platform.</p>
+                    </div>
+                    <ul>
+                        <li>No application fees</li>
+                        <li>No subscription charges</li>
+                        <li>No hidden costs</li>
+                        <li>No obligation to accept any offers</li>
+                    </ul>
+                    <p>Our compensation does not affect your loan terms, rates, or the offers you receive from lenders. You will never pay anything to use SeedingData's services.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="security">
+                <div class="faq-question">
+                    <span>What happens to my information after I'm matched?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>After you submit your information, here's what happens:</p>
+                    <ul>
+                        <li><strong>Immediate Processing:</strong> Our system processes your information right away</li>
+                        <li><strong>Lender Matching:</strong> We match you with suitable lenders from our network</li>
+                        <li><strong>Information Sharing:</strong> Your data is shared only with matched lenders</li>
+                        <li><strong>Lender Contact:</strong> Lenders contact you directly with offers</li>
+                        <li><strong>Data Retention:</strong> We keep your information to improve our service and for compliance</li>
+                    </ul>
+                    <div class="warning-box">
+                        <p><strong>Important:</strong> Once your information is shared with lenders, they have their own data retention and privacy policies. We encourage you to review their policies directly.</p>
+                    </div>
+                    <p>You can request access to or deletion of your information by contacting us at privacy@seedingdata.com.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-results" id="noResults">
+            <h3>No questions found</h3>
+            <p>Try searching with different keywords or browse all questions.</p>
+        </div>
+
+        <div class="contact-section">
+            <h3>Still Have Questions?</h3>
+            <p>We're here to help! If you don't see your question answered here, please don't hesitate to reach out.</p>
+            <p><strong>Email:</strong> support@seedingdata.com</p>
+            <p><strong>Phone:</strong> 1-800-SEED-DATA</p>
+            <p><strong>Hours:</strong> Monday-Friday, 9AM-6PM EST</p>
+            <p><a href="index.html#form-section">Get Started Now</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 SeedingData. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.closest('.faq-item');
+                const allFaqItems = document.querySelectorAll('.faq-item');
+                
+                // Close all other FAQ items
+                allFaqItems.forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current FAQ item
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Category Filter Functionality
+        document.querySelectorAll('.category-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                // Update active state
+                document.querySelectorAll('.category-tag').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                const faqItems = document.querySelectorAll('.faq-item');
+                
+                faqItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Reset search
+                document.getElementById('faqSearch').value = '';
+            });
+        });
+
+        // Search Functionality
+        document.getElementById('faqSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            const noResults = document.getElementById('noResults');
+            let hasResults = false;
+            
+            // Reset category filter
+            document.querySelectorAll('.category-tag').forEach(t => t.classList.remove('active'));
+            document.querySelector('[data-category="all"]').classList.add('active');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            noResults.style.display = hasResults ? 'none' : 'block';
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

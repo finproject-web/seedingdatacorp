@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Loans - Get Matched with Lenders | SeedingData</title>
+    <meta name="description" content="Find personal loan options tailored to your needs. Connect with lenders in minutes using our secure matching platform. Check your personal loan rates with SeedingData.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="logo.jpeg" alt="SeedingData Logo" style="height: 50px; width: auto;">
+                        <h1 style="font-size: 20px; margin: 0; color: #2c3e50;">Seeding Data Corp</h1>
+                    </div>
+                </div>
+                <div class="header-trust">
+                    <span class="ssl-badge">SSL Secured</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Personal Loans Tailored to Your Financial Needs</h1>
+                    <p>Get matched with top personal loan lenders in minutes with our secure platform</p>
+                    <p style="color: #27ae60; font-weight: 600; margin: 10px 0;">$1,000-$50,000 personal loans available</p>
+                    <p style="color: #2c3e50; font-size: 16px; margin-bottom: 20px; font-weight: 500;">Compare personal loan rates - no impact on your credit score</p>
+                    <button class="cta-button" onclick="scrollToForm()">Get Matched Now</button>
+                </div>
+                <div class="hero-trust-badges">
+                    <div class="trust-item">
+                        <span class="trust-icon">256-bit</span>
+                        <span>Encryption</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">No Obligation</span>
+                        <span>Free Service</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Step Form Section -->
+    <section class="form-section" id="form-section">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>See What Personal Loan You May Qualify For</h2>
+                    <p>Quick, secure, and takes less than 3 minutes</p>
+                    <p style="color: #e74c3c; font-weight: 600; margin: 10px 0;">Limited personal loan offers available - act fast!</p>
+                    <p style="color: #666; font-size: 14px;">Compare multiple personal loan lenders in one place - no obligation</p>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-step active" data-step="1">
+                            <span class="step-number">1</span>
+                            <span class="step-label">Loan Info</span>
+                        </div>
+                        <div class="progress-step" data-step="2">
+                            <span class="step-number">2</span>
+                            <span class="step-label">Contact Info</span>
+                        </div>
+                        <div class="progress-step" data-step="3">
+                            <span class="step-number">3</span>
+                            <span class="step-label">Details</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form id="loan-form" class="multi-step-form">
+                    <!-- Step 1 -->
+                    <div class="form-step active" id="step-1">
+                        <h3>Quick personal loan information</h3>
+                        <div class="form-group">
+                            <label for="loan-amount">Personal Loan Amount Needed</label>
+                            <select id="loan-amount" name="loanAmount" required>
+                                <option value="">Select amount</option>
+                                <option value="500-1000">$500 - $1,000</option>
+                                <option value="1000-2500">$1,000 - $2,500</option>
+                                <option value="2500-5000">$2,500 - $5,000</option>
+                                <option value="5000-10000">$5,000 - $10,000</option>
+                                <option value="10000-25000">$10,000 - $25,000</option>
+                                <option value="25000+">$25,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="zip-code">ZIP Code</label>
+                            <input type="text" id="zip-code" name="zipCode" maxlength="5" pattern="[0-9]{5}" required>
+                        </div>
+                        <button type="button" class="next-button" onclick="nextStep(1)">Continue</button>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="form-step" id="step-2">
+                        <h3>Your contact information</h3>
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" pattern="\(\d{3}\) \d{3}-\d{4}" placeholder="(123) 456-7890" required>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="button" class="back-button" onclick="previousStep(2)">Back</button>
+                            <button type="button" class="next-button" onclick="nextStep(2)">Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="form-step" id="step-3">
+                        <h3>Address and employment information</h3>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <select id="state" name="state" required>
+                                <option value="">Select state</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bank-name">Bank Name</label>
+                            <input type="text" id="bank-name" name="bankName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bank-routing">Bank Routing Number</label>
+                            <input type="text" id="bank-routing" name="bankRouting" maxlength="9" pattern="[0-9]{9}" placeholder="9-digit routing number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="credit-score">Credit Score Range</label>
+                            <select id="credit-score" name="creditScore" required>
+                                <option value="">Select credit range</option>
+                                <option value="excellent">750+ (Excellent)</option>
+                                <option value="good">700-749 (Good)</option>
+                                <option value="fair">650-699 (Fair)</option>
+                                <option value="poor">600-649 (Poor)</option>
+                                <option value="bad">Below 600 (Bad)</option>
+                                <option value="not-sure">Not Sure</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="employment-status">Employment Status</label>
+                            <select id="employment-status" name="employmentStatus" required>
+                                <option value="">Select status</option>
+                                <option value="employed-full-time">Employed Full-Time</option>
+                                <option value="employed-part-time">Employed Part-Time</option>
+                                <option value="self-employed">Self-Employed</option>
+                                <option value="retired">Retired</option>
+                                <option value="disabled">Disabled</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="monthly-income">Monthly Income</label>
+                            <select id="monthly-income" name="monthlyIncome" required>
+                                <option value="">Select income range</option>
+                                <option value="0-1000">Less than $1,000</option>
+                                <option value="1000-2000">$1,000 - $2,000</option>
+                                <option value="2000-3000">$2,000 - $3,000</option>
+                                <option value="3000-4000">$3,000 - $4,000</option>
+                                <option value="4000-5000">$4,000 - $5,000</option>
+                                <option value="5000-7500">$5,000 - $7,500</option>
+                                <option value="7500+">More than $7,500</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="tcpa-consent">
+                                <input type="checkbox" id="tcpa-consent" name="tcpaConsent" required>
+                                <label for="tcpa-consent">
+                                    By checking this box, I agree to receive autodialed and pre-recorded telemarketing calls and texts from SeedingData and our lending partners regarding my personal loan inquiry at the phone number provided above. I understand that consent is not a condition of purchase.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="button" class="back-button" onclick="previousStep(3)">Back</button>
+                            <button type="submit" class="submit-button">Get Matched Now</button>
+                        </div>
+                        <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #007bff;">
+                            <p style="font-size: 12px; color: #666; margin: 0; line-height: 1.4;">
+                                <strong>By clicking 'Get Matched Now', you agree to:</strong><br>
+                                1. Receive autodialed calls/texts from SeedingData and lending partners<br>
+                                2. Consent is not required to purchase<br>
+                                3. Message/data rates may apply<br>
+                                4. Reply STOP to opt out
+                            </p>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Trust Badges -->
+                <div class="form-trust-badges">
+                    <div class="trust-badge">
+                        <span class="badge-icon">SSL</span>
+                        <span>Secure Connection</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="badge-icon">Privacy</span>
+                        <span>Privacy Protected</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="badge-icon">Network</span>
+                        <span>Trusted Network</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How Personal Loans Work</h2>
+                <p>Get matched with personal loan lenders in three simple steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3>Fill out personal loan form</h3>
+                    <p>Complete our secure, 3-minute personal loan form with your basic information</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3>We match you with personal loan lenders</h3>
+                    <p>Our system connects you with personal loan providers from our trusted network</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3>Review your personal loan options</h3>
+                    <p>Compare personal loan offers and choose what works best for your financial needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Our Personal Loan Platform</h2>
+                <p>Your trusted partner in finding personal loan solutions</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">Fast and secure</div>
+                    <h3>Fast and Secure</h3>
+                    <p>Get matched with personal loan lenders in minutes with bank-level security</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">No obligation</div>
+                    <h3>No Obligation</h3>
+                    <p>Review personal loan options without any commitment or cost</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">All credit types</div>
+                    <h3>All Credit Types Considered</h3>
+                    <p>Our personal loan network works with various credit backgrounds</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">Trusted network</div>
+                    <h3>Trusted Network</h3>
+                    <p>Connect with established and reputable personal loan lenders</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trusted by Thousands of Personal Loan Seekers</h2>
+                <p>See why people choose our platform for their personal loan needs</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="rating-display">
+                            <span class="stars">?????</span>
+                            <span class="rating-number">4.8</span>
+                            <span class="rating-text">Personal Loan Rating</span>
+                        </div>
+                        <p>Quick personal loan matching with multiple lender options</p>
+                        <div class="trust-metric">
+                            <span class="metric-number">50K+</span>
+                            <span class="metric-label">Personal Loans Helped</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="rating-display">
+                            <span class="stars">?????</span>
+                            <span class="rating-number">4.9</span>
+                            <span class="rating-text">Customer Service</span>
+                        </div>
+                        <p>Transparent personal loan process with no hidden fees</p>
+                        <div class="trust-metric">
+                            <span class="metric-number">100+</span>
+                            <span class="metric-label">Personal Loan Lenders</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="rating-display">
+                            <span class="stars">?????</span>
+                            <span class="rating-number">4.7</span>
+                            <span class="rating-text">Overall Experience</span>
+                        </div>
+                        <p>Simple personal loan application with fast responses</p>
+                        <div class="trust-metric">
+                            <span class="metric-number">24/7</span>
+                            <span class="metric-label">Availability</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Phone: (470) 243-4061</p>
+                    <p>Email: support@seedingdata.com</p>
+                    <p>Address: P.O. Box 1503, San Carlos, CA 94070</p>
+                    <p>Hours: Mon-Fri 9AM-6PM EST</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="disclosure.html">Disclosure</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="disclaimer">
+                    <p><strong>Important Disclaimer:</strong> SeedingData is not a lender and does not make credit decisions. We are a free matching service that connects consumers with lending partners. Loan availability and terms vary by lender and state. Not all applicants will qualify for a personal loan.</p>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2024 SeedingData. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
